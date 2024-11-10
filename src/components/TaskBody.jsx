@@ -1,6 +1,7 @@
 import Task from "./Task";
 
-const TaskBody = () => {
+const TaskBody = ({ tasks }) => {
+  console.log(tasks);
   return (
     <div className="overflow-auto">
       <table className="table-fixed overflow-auto xl:w-full">
@@ -33,7 +34,9 @@ const TaskBody = () => {
         {/* Table Body */}
         <tbody>
           {/* Task */}
-          <Task />
+          {tasks.map((task) => (
+            <Task key={task.id} task={task} />
+          ))}
         </tbody>
       </table>
     </div>

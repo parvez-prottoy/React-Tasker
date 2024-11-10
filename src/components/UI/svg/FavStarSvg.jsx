@@ -1,4 +1,4 @@
-const StarSvg = () => {
+const FavStarSvg = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7,8 +7,8 @@ const StarSvg = () => {
       height="24"
       viewBox="0 0 24 24"
       strokeWidth="2"
-      stroke="currentColor"
-      fill="none"
+      stroke="yellow"
+      fill="yellow"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -18,4 +18,4 @@ const StarSvg = () => {
   );
 };
 
-export default StarSvg;
+export default FavStarSvg;
