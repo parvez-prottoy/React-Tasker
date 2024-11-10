@@ -1,6 +1,9 @@
-const Button = ({ bg, children }) => {
+const Button = ({ bg, onAction, children }) => {
   return (
-    <button className={`rounded-md ${bg} px-3.5 py-2.5 text-sm font-semibold`}>
+    <button
+      onClick={onAction}
+      className={`rounded-md ${bg} px-3.5 py-2.5 text-sm font-semibold`}
+    >
       {children}
     </button>
   );

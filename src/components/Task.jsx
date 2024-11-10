@@ -5,7 +5,7 @@ import StarSvg from "./UI/svg/StarSvg";
 const Task = ({ task }) => {
   const { id, title, description, tags, priority, favorite } = task;
   return (
-    <tr className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">
+    <tr className="border-b border-[#2E3443] [&>td]:align-center [&>td]:px-4 [&>td]:py-2">
       <td>{favorite ? <FavStarSvg /> : <StarSvg />}</td>
       <td>{title}</td>
       <td>

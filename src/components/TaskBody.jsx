@@ -1,7 +1,6 @@
 import Task from "./Task";
 
 const TaskBody = ({ tasks }) => {
-  console.log(tasks);
   return (
     <div className="overflow-auto">
       <table className="table-fixed overflow-auto xl:w-full">
