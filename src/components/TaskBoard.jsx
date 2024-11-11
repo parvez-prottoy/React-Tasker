@@ -16,25 +16,53 @@ const TaskBoard = () => {
     },
   ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [taskToUpdate, setTaskToUpdate] = useState(null);
+  const [isAdd, setIsAdd] = useState(taskToUpdate === null ? true : false);
   // handlers
-  const handleAddTask = (newTask) => {
-    setTasks([newTask, ...tasks]);
+  const handleAddEditTask = (newTask) => {
+    if (isAdd) {
+      console.log("Add");
+      setTasks([newTask, ...tasks]);
+    } else {
+      console.log("Update");
+      setTasks(
+        tasks.map((task) => {
+          if (task.id === newTask.id) {
+            return newTask;
+          } else {
+            return task;
+          }
+        })
+      );
+    }
     setIsModalOpen(false);
+  };
+  const handleAddTask = () => {
+    setTaskToUpdate(null);
+    setIsAdd(true);
+    setIsModalOpen(true);
+  };
+  const handleEditTask = (task) => {
+    setTaskToUpdate(task);
+    setIsAdd(false);
+    setIsModalOpen(true);
   };
   return (
     <section className="pb-[114px] pt-20 md:mt-[100px]">
       {isModalOpen && (
         <Form
-          onAddTask={handleAddTask}
+          onAddEditTask={handleAddEditTask}
           onCloseModal={() => setIsModalOpen(false)}
+          taskToUpdate={taskToUpdate}
+          isAdd={isAdd}
         />
       )}
       <div className="container">
         {/* Search Box */}
         <Search />
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-          <TaskHead onOpenModal={() => setIsModalOpen(true)} />
-          <TaskBody tasks={tasks} />
+          <TaskHead onAddTask={handleAddTask} />
+          <TaskBody tasks={tasks} onEditTask={handleEditTask} />
         </div>
       </div>
     </section>

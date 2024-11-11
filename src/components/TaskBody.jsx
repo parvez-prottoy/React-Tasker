@@ -1,6 +1,6 @@
 import Task from "./Task";
 
-const TaskBody = ({ tasks }) => {
+const TaskBody = ({ tasks, onEditTask }) => {
   return (
     <div className="overflow-auto">
       <table className="table-fixed overflow-auto xl:w-full">
@@ -34,7 +34,7 @@ const TaskBody = ({ tasks }) => {
         <tbody>
           {/* Task */}
           {tasks.map((task) => (
-            <Task key={task.id} task={task} />
+            <Task key={task.id} task={task} onEditTask={onEditTask} />
           ))}
         </tbody>
       </table>
