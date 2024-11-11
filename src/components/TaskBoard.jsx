@@ -51,6 +51,9 @@ const TaskBoard = () => {
     confirm("Are you sure you want to delete this task?") &&
       setTasks(tasks.filter((task) => task.id !== id));
   };
+  const handleDeleteAllTask = () => {
+    confirm("Are you sure you want to delete all tasks?") && setTasks([]);
+  };
   return (
     <section className="pb-[114px] pt-20 md:mt-[100px]">
       {isModalOpen && (
@@ -65,7 +68,10 @@ const TaskBoard = () => {
         {/* Search Box */}
         <Search />
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-          <TaskHead onAddTask={handleAddTask} />
+          <TaskHead
+            onAddTask={handleAddTask}
+            onAllDeleteTask={handleDeleteAllTask}
+          />
           <TaskBody
             tasks={tasks}
             onEditTask={handleEditTask}

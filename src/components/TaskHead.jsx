@@ -1,6 +1,6 @@
 import Button from "./UI/Button";
 
-const TaskHead = ({ onAddTask }) => {
+const TaskHead = ({ onAddTask, onAllDeleteTask }) => {
   return (
     <div className="mb-14 items-center justify-between sm:flex">
       <h2 className="text-2xl font-semibold max-sm:mb-4">Your Tasks</h2>
@@ -10,7 +10,9 @@ const TaskHead = ({ onAddTask }) => {
           Add Tasks
         </Button>
         {/* Delete All Tasks Button */}
-        <Button bg="bg-red-500">Delete All</Button>
+        <Button bg="bg-red-500" onAction={onAllDeleteTask}>
+          Delete All
+        </Button>
       </div>
     </div>
   );
