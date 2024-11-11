@@ -1,7 +1,7 @@
 import Task from "./Task";
 import NotFound from "./UI/NotFound";
 
-const TaskBody = ({ tasks, onEditTask, onDeleteTask }) => {
+const TaskBody = ({ tasks, onEditTask, onDeleteTask, onFavorite }) => {
   return (
     <div className="overflow-auto">
       {tasks.length === 0 ? (
@@ -43,6 +43,7 @@ const TaskBody = ({ tasks, onEditTask, onDeleteTask }) => {
                 task={task}
                 onEditTask={onEditTask}
                 onDeleteTask={onDeleteTask}
+                onFavorite={onFavorite}
               />
             ))}
           </tbody>

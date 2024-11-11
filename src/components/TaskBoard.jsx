@@ -54,6 +54,17 @@ const TaskBoard = () => {
   const handleDeleteAllTask = () => {
     confirm("Are you sure you want to delete all tasks?") && setTasks([]);
   };
+  const handleFavorite = (id) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === id) {
+          return { ...task, favorite: !task.favorite };
+        } else {
+          return task;
+        }
+      })
+    );
+  };
   return (
     <section className="pb-[114px] pt-20 md:mt-[100px]">
       {isModalOpen && (
@@ -76,6 +87,7 @@ const TaskBoard = () => {
             tasks={tasks}
             onEditTask={handleEditTask}
             onDeleteTask={handleDeleteTask}
+            onFavorite={handleFavorite}
           />
         </div>
       </div>

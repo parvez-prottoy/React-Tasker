@@ -1,12 +1,17 @@
+import { useState } from "react";
 import Tag from "./Tag";
 import FavStarSvg from "./UI/svg/FavStarSvg";
 import StarSvg from "./UI/svg/StarSvg";
 
-const Task = ({ task, onEditTask, onDeleteTask }) => {
+const Task = ({ task, onEditTask, onDeleteTask, onFavorite }) => {
   const { id, title, description, tags, priority, favorite } = task;
   return (
     <tr className="border-b border-[#2E3443] [&>td]:align-center [&>td]:px-4 [&>td]:py-2">
-      <td>{favorite ? <FavStarSvg /> : <StarSvg />}</td>
+      <td>
+        <button onClick={() => onFavorite(id)}>
+          {favorite ? <FavStarSvg /> : <StarSvg />}
+        </button>
+      </td>
       <td className="capitalize">{title}</td>
       <td>
         <div className="capitalize">{description}</div>
