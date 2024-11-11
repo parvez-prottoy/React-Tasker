@@ -17,21 +17,26 @@ const TaskBoard = () => {
   ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   // handlers
-
+  const handleAddTask = (newTask) => {
+    setTasks([newTask, ...tasks]);
+    setIsModalOpen(false);
+  };
   return (
     <section className="pb-[114px] pt-20 md:mt-[100px]">
-      {isModalOpen ? (
-        <Form onCloseModal={() => setIsModalOpen(false)} />
-      ) : (
-        <div className="container">
-          {/* Search Box */}
-          <Search />
-          <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-            <TaskHead onOpenModal={() => setIsModalOpen(true)} />
-            <TaskBody tasks={tasks} />
-          </div>
-        </div>
+      {isModalOpen && (
+        <Form
+          onAddTask={handleAddTask}
+          onCloseModal={() => setIsModalOpen(false)}
+        />
       )}
+      <div className="container">
+        {/* Search Box */}
+        <Search />
+        <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
+          <TaskHead onOpenModal={() => setIsModalOpen(true)} />
+          <TaskBody tasks={tasks} />
+        </div>
+      </div>
     </section>
   );
 };
