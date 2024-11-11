@@ -2,8 +2,8 @@ import Tag from "./Tag";
 import FavStarSvg from "./UI/svg/FavStarSvg";
 import StarSvg from "./UI/svg/StarSvg";
 
-const Task = ({ task, onEditTask }) => {
-  const { title, description, tags, priority, favorite } = task;
+const Task = ({ task, onEditTask, onDeleteTask }) => {
+  const { id, title, description, tags, priority, favorite } = task;
   return (
     <tr className="border-b border-[#2E3443] [&>td]:align-center [&>td]:px-4 [&>td]:py-2">
       <td>{favorite ? <FavStarSvg /> : <StarSvg />}</td>
@@ -22,7 +22,9 @@ const Task = ({ task, onEditTask }) => {
       <td className="text-center capitalize">{priority}</td>
       <td>
         <div className="flex items-center justify-center space-x-3">
-          <button className="text-red-500">Delete</button>
+          <button onClick={() => onDeleteTask(id)} className="text-red-500">
+            Delete
+          </button>
           <button onClick={() => onEditTask(task)} className="text-blue-500">
             Edit
           </button>

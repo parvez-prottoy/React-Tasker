@@ -47,6 +47,10 @@ const TaskBoard = () => {
     setIsAdd(false);
     setIsModalOpen(true);
   };
+  const handleDeleteTask = (id) => {
+    confirm("Are you sure you want to delete this task?") &&
+      setTasks(tasks.filter((task) => task.id !== id));
+  };
   return (
     <section className="pb-[114px] pt-20 md:mt-[100px]">
       {isModalOpen && (
@@ -62,7 +66,11 @@ const TaskBoard = () => {
         <Search />
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
           <TaskHead onAddTask={handleAddTask} />
-          <TaskBody tasks={tasks} onEditTask={handleEditTask} />
+          <TaskBody
+            tasks={tasks}
+            onEditTask={handleEditTask}
+            onDeleteTask={handleDeleteTask}
+          />
         </div>
       </div>
     </section>
