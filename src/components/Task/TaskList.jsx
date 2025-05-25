@@ -27,7 +27,7 @@ export default function TaskList({ tasks }) {
         <tbody>
           {tasks.length > 0 ? (
             tasks.map((task) => (
-              <tr className="border-b-1 border-slate-300">
+              <tr key={task.id} className="border-b-1 border-slate-300">
                 <td className="px-4 py-3 text-center">
                   <button className="border-0 bg-transparent cursor-pointer text-xl">
                     {task.isFavorite ? (
@@ -45,7 +45,7 @@ export default function TaskList({ tasks }) {
                   <ul>
                     {task.tags.map((tag, index) => (
                       <li
-                        key={task.id}
+                        key={task.id + index}
                         className={`inline-block px-3 py-1 m-1 ${
                           tagColors[index % tagColors.length]
                         } text-white rounded-full mr-1 text-sm`}
