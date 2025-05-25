@@ -38,6 +38,14 @@ export default function TaskBoard() {
   const handleDeleteAllTasks = () => {
     setTasks([]);
   };
+  // Function to toggle favorite status of a task
+  const handleToggleFavorite = (taskId) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === taskId ? { ...task, isFavorite: !task.isFavorite } : task
+      )
+    );
+  };
   return (
     <section className="mb-10 px-5 lg:px-20">
       {showModal && (
@@ -65,6 +73,7 @@ export default function TaskBoard() {
             tasks={tasks}
             onEditTask={handleEditTask}
             onDeleteTask={handleDeleteTask}
+            onFavoriteTask={handleToggleFavorite}
           />
         </div>
       </div>

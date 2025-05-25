@@ -1,6 +1,11 @@
 import { FaRegStar, FaStar } from "react-icons/fa";
 
-export default function TaskList({ tasks, onEditTask, onDeleteTask }) {
+export default function TaskList({
+  tasks,
+  onEditTask,
+  onDeleteTask,
+  onFavoriteTask,
+}) {
   const tagColors = [
     "bg-green-500",
     "bg-blue-500",
@@ -29,7 +34,10 @@ export default function TaskList({ tasks, onEditTask, onDeleteTask }) {
             tasks.map((task) => (
               <tr key={task.id} className="border-b-1 border-slate-300">
                 <td className="px-4 py-3 text-center">
-                  <button className="border-0 bg-transparent cursor-pointer text-xl">
+                  <button
+                    onClick={() => onFavoriteTask(task.id)}
+                    className="border-0 bg-transparent cursor-pointer text-xl"
+                  >
                     {task.isFavorite ? (
                       <FaStar className="text-yellow-500" />
                     ) : (
