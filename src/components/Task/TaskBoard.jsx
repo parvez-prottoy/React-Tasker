@@ -17,12 +17,12 @@ export default function TaskBoard() {
   const [tasks, setTasks] = useState([defaultTask]);
   const [showModal, setShowModal] = useState(false);
   const [updateTask, setUpdateTask] = useState(null);
-  // Function to add a new task
+  // Function to add or edit a task
   const handleAddEditTask = (task, isAddMode) => {
     if (isAddMode) {
       setTasks([...tasks, task]);
     } else {
-      setTasks(tasks.map((t) => (t.id === task.id ? task : task)));
+      setTasks(tasks.map((t) => (t.id === task.id ? task : t)));
     }
   };
   const handleEditTask = (updateTask) => {

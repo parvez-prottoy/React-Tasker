@@ -96,9 +96,9 @@ export default function TaskModal({ onCloseModal, onAddEditTask, editTask }) {
               required
             >
               <option value="">Select Priority</option>
-              <option value="High">High</option>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
+              <option value="high">High</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
             </select>
           </div>
 
