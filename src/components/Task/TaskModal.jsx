@@ -1,14 +1,17 @@
 import { useState } from "react";
 
-export default function TaskModal({ onCloseModal, onAddTask }) {
-  const [task, setTask] = useState({
-    id: crypto.randomUUID(),
-    title: "",
-    description: "",
-    tags: [],
-    priority: "",
-    isFavorite: false,
-  });
+export default function TaskModal({ onCloseModal, onAddEditTask, editTask }) {
+  const [task, setTask] = useState(
+    editTask || {
+      id: crypto.randomUUID(),
+      title: "",
+      description: "",
+      tags: [],
+      priority: "",
+      isFavorite: false,
+    }
+  );
+  const [isAddMode] = useState(Object.is(editTask, null));
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTask((prevTask) => ({
@@ -19,7 +22,7 @@ export default function TaskModal({ onCloseModal, onAddTask }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddTask(task);
+    onAddEditTask(task, isAddMode);
     onCloseModal();
   };
   return (
@@ -31,7 +34,7 @@ export default function TaskModal({ onCloseModal, onAddTask }) {
       <div className="bg-white p-5 border border-slate-400 rounded-lg w-100 items-center m-auto z-10 absolute top-10 left-1 right-1 md:top-1/6">
         {/* Modal title changes based on add or edit mode */}
         <h2 className="font-semibold text-2xl text-center mb-2">
-          Add New Task
+          {isAddMode ? "Add New Task" : "Edit Task"}
         </h2>
 
         {/* Task form */}
@@ -102,10 +105,11 @@ export default function TaskModal({ onCloseModal, onAddTask }) {
           {/* Buttons to submit or close the modal */}
           <div className="text-center">
             <button
+              onClick={handleSubmit}
               type="submit"
               className="px-6 py-2 rounded-md bg-green-t text-white mb-2 lg:mr-2 cursor-pointer hover:opacity-80 duration-300"
             >
-              Submit
+              {isAddMode ? "Add Task" : "Update Task"}
             </button>
             <button
               onClick={onCloseModal}

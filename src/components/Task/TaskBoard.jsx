@@ -16,17 +16,27 @@ const defaultTask = {
 export default function TaskBoard() {
   const [tasks, setTasks] = useState([defaultTask]);
   const [showModal, setShowModal] = useState(false);
+  const [updateTask, setUpdateTask] = useState(null);
   // Function to add a new task
-  const handleAddTask = (task) => {
-    setTasks([task, ...tasks]);
+  const handleAddEditTask = (task, isAddMode) => {
+    if (isAddMode) {
+      setTasks([...tasks, task]);
+    } else {
+      setTasks(tasks.map((t) => (t.id === task.id ? task : task)));
+    }
   };
-  console.log(tasks);
+  const handleEditTask = (updateTask) => {
+    console.log("Edit Task", updateTask);
+    setUpdateTask(updateTask);
+    setShowModal(true);
+  };
   return (
     <section className="mb-10 px-5 lg:px-20">
       {showModal && (
         <TaskModal
-          onAddTask={handleAddTask}
+          onAddEditTask={handleAddEditTask}
           onCloseModal={() => setShowModal(false)}
+          editTask={updateTask}
         />
       )}
       <div className="container mx-auto flex md:flex-row flex-col items-center justify-between mb-5">
@@ -40,7 +50,7 @@ export default function TaskBoard() {
           {/* Task Actions */}
           <TaskActions onOpenModal={() => setShowModal(true)} />
           {/* Task List */}
-          <TaskList tasks={tasks} />
+          <TaskList tasks={tasks} onEditTask={handleEditTask} />
         </div>
       </div>
     </section>
