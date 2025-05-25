@@ -30,6 +30,10 @@ export default function TaskBoard() {
     setUpdateTask(updateTask);
     setShowModal(true);
   };
+  // Function to delete a task
+  const handleDeleteTask = (taskId) => {
+    setTasks(tasks.filter((task) => task.id !== taskId));
+  };
   return (
     <section className="mb-10 px-5 lg:px-20">
       {showModal && (
@@ -50,7 +54,11 @@ export default function TaskBoard() {
           {/* Task Actions */}
           <TaskActions onOpenModal={() => setShowModal(true)} />
           {/* Task List */}
-          <TaskList tasks={tasks} onEditTask={handleEditTask} />
+          <TaskList
+            tasks={tasks}
+            onEditTask={handleEditTask}
+            onDeleteTask={handleDeleteTask}
+          />
         </div>
       </div>
     </section>

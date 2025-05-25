@@ -1,6 +1,6 @@
 import { FaRegStar, FaStar } from "react-icons/fa";
 
-export default function TaskList({ tasks, onEditTask }) {
+export default function TaskList({ tasks, onEditTask, onDeleteTask }) {
   const tagColors = [
     "bg-green-500",
     "bg-blue-500",
@@ -70,7 +70,10 @@ export default function TaskList({ tasks, onEditTask }) {
                   </span>
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <button className="px-3 py-2 text-red-700 cursor-pointer">
+                  <button
+                    onClick={() => onDeleteTask(task.id)}
+                    className="px-3 py-2 text-red-700 cursor-pointer"
+                  >
                     Delete
                   </button>
                   <button
