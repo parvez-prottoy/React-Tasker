@@ -1,9 +1,19 @@
+import { useState } from "react";
 import FilterTask from "./FilterTask";
 import SearchTask from "./SearchTask";
 import TaskActions from "./TaskActions";
 import TaskList from "./TaskList";
 
+const defaultTask = {
+  id: crypto.randomUUID(),
+  title: "Learn React",
+  description: "Learn React by building a task management app",
+  tags: ["react", "javascript", "web development"],
+  priority: "high",
+  isFavorite: false,
+};
 export default function TaskBoard() {
+  const [tasks, setTasks] = useState([defaultTask]);
   return (
     <section className="mb-10 px-5 lg:px-20">
       <div className="container mx-auto flex md:flex-row flex-col items-center justify-between mb-5">
@@ -17,7 +27,7 @@ export default function TaskBoard() {
           {/* Task Actions */}
           <TaskActions />
           {/* Task List */}
-          <TaskList />
+          <TaskList tasks={tasks} />
         </div>
       </div>
     </section>
