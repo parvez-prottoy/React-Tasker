@@ -1,4 +1,4 @@
-export default function TaskActions({ onOpenModal }) {
+export default function TaskActions({ onOpenModal, onAllDelete }) {
   return (
     <div className="grid grid-cols-2 items-center justify-between">
       <div>
@@ -11,7 +11,10 @@ export default function TaskActions({ onOpenModal }) {
         >
           Add Task
         </button>
-        <button className="px-6 py-2 rounded-md bg-red-400 text-white cursor-pointer hover:opacity-80 duration-300">
+        <button
+          onClick={onAllDelete}
+          className="px-6 py-2 rounded-md bg-red-400 text-white cursor-pointer hover:opacity-80 duration-300"
+        >
           Delete All
         </button>
       </div>

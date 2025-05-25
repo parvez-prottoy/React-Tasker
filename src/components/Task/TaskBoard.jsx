@@ -34,6 +34,10 @@ export default function TaskBoard() {
   const handleDeleteTask = (taskId) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
+  // Function to delete all tasks
+  const handleDeleteAllTasks = () => {
+    setTasks([]);
+  };
   return (
     <section className="mb-10 px-5 lg:px-20">
       {showModal && (
@@ -52,7 +56,10 @@ export default function TaskBoard() {
       <div className="container mx-auto">
         <div className="p-8 bg-gray-t rounded-lg shadow-md border-t-1 border-slate-100">
           {/* Task Actions */}
-          <TaskActions onOpenModal={() => setShowModal(true)} />
+          <TaskActions
+            onAllDelete={handleDeleteAllTasks}
+            onOpenModal={() => setShowModal(true)}
+          />
           {/* Task List */}
           <TaskList
             tasks={tasks}
