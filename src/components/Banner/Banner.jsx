@@ -8,7 +8,7 @@ export default function Banner() {
             <img src={taskImg} alt="tasker" />
           </div>
           <div className="col-span-10 lg:col-span-8 lg:order-1 text-wrap">
-            <h2 className="font-bold text-8xl text-green-t mb-4">Tasker</h2>
+            <h2 className="font-bold text-8xl text-green-t mb-4">Tasker App</h2>
             <p className="text-xl">
               Tasker is a simple task management app that allows you to create,
               update, and delete tasks. You can also mark tasks as completed or
