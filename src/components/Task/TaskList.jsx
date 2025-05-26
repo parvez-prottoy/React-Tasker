@@ -95,8 +95,8 @@ export default function TaskList({
             ))
           ) : (
             <tr className="border-b-1 border-slate-300">
-              <td colSpan="6" className="text-center py-4">
-                No tasks available
+              <td colSpan="6" className="text-center py-4 text-gray-500">
+                <span className="text-lg font-semibold">No Task Found !</span>
               </td>
             </tr>
           )}
